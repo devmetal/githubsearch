@@ -2,17 +2,15 @@
 
 class PageService {
   constructor() {
-    this.pageTitle = '';
-    this.userName = '';
-
+    this.title = "";
   }
 
   setTitle(title) {
-    this.pageTitle = title;
+    this.title = title;
   }
 
-  setUserName(name) {
-    this.userName = name;
+  getTitle() {
+    return this.title
   }
 }
 

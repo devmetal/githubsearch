@@ -1,0 +1,33 @@
+<form layout="row" layout-sm="column" name="searchform" ng-submit="list.doSearch(searchform.$valid)" novalidate>
+  <div flex="80" flex-sm="100">
+    <md-input-container>
+      <label>Repository Name</label>
+      <input name="keyword" ng-model="list.keyword" required></input>
+    </md-input-container>
+  </div>
+  <div flex>
+    <md-input-container>
+      <md-button type="submit" ng-disabled="searchform.$invalid" class="md-raised md-primary">Search</md-button>
+    </md-input-container>
+  </div>
+</form>
+<md-content layout="column">
+  <md-list>
+    <md-list-item class="md-2-line" ng-click="list.showInfo($index)" ng-repeat="repo in list.repositories track by $index">
+      <img ng-src="{{repo.owner.avatar_url}}" class="md-avatar" alt="Avatar" />
+      <div class="md-list-item-text" layout="column">
+        <h3>{{repo.full_name}}</h3>
+        <h4>{{repo.description}}</h4>
+        <div ng-show="list.current == $index">
+          Forks: {{repo.forks_count}}
+          Stargazers: {{repo.stargazers_count}}
+          Watchers: {{repo.watchers_count}}
+          <md-button ng-click="list.showIssues(repo)">Issues {{repo.open_issues_count}}</md-button>
+        </div>
+      </div>
+    </md-list-item>
+  </md-list>
+  <div ng-if="list.hasItems()" layout="column" layout-align="center center">
+    <md-button ng-click="list.showMore()">Show more</md-button>
+  </div>
+</md-content>

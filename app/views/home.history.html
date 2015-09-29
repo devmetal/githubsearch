@@ -1,9 +1,0 @@
-<form name="account" ng-submit="historyCt.getAccountHistory()">
-  <md-select name="account" ng-model="historyCt.account">
-    <md-option value="{{option.no}}" ng-repeat="option in historyCt.accounts track by option.no">
-      {{option.no}}
-    </md-option>
-  </md-select>
-  <md-button type="submit">Mutat</md-button>
-</form>
-<div ui-view></div>

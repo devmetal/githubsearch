@@ -1,0 +1,15 @@
+<md-content layout="column">
+  <md-list>
+    <md-list-item class="md-3-line" ng-repeat="issue in iss.issues track by $index">
+      <img ng-src="{{issue.user.avatar_url}}" class="md-avatar" alt="Avatar" />
+      <div class="md-list-item-text" layout="column">
+        <h3>{{issue.title}}</h3>
+        <h4>{{issue.state}}</h4>
+        <p>{{issue.body}}</p>
+      </div>
+    </md-list-item>
+  </md-list>
+  <div ng-if="iss.hasItems()" layout="column" layout-align="center center">
+    <md-button ng-click="iss.showMore()">Show more</md-button>
+  </div>
+</md-content>

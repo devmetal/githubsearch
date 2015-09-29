@@ -1,17 +1,9 @@
 'use strict';
 
-class HomeController {
-  constructor($scope, pageService, userService) {
-    let user = userService.getUser();
-    this.hasAccount = userService.hasAccount();
-    this.user = user;
-
-    pageService.setTitle('Fairbank főlap');
-    pageService.setUserName(user.datas.name);
-    $scope.Page = pageService;
+module.exports = ['$scope', '$state', 'PageService', 'GithubService', ($scope, $state, ps, gs) => {
+  ps.setTitle('Github Repo Browser');
+  $scope.Page = ps;
+  $scope.goHome = () => {
+    $state.go('home.list');
   }
-}
-
-HomeController.$inject = ['$scope', 'PageService', 'UserService'];
-
-module.exports = HomeController;
+}];
