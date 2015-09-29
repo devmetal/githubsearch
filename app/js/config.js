@@ -3,11 +3,11 @@
 let angular = require('angular');
 
 angular.module('Hub')
-.value('Github',{
-  apiUrl: 'https://api.github.com',
-  apiSearch: (keyword) => `/search/repositories?q=${keyword}`,
-  apiIssues: (user, repo) => `/search/issues?q=repo:${user}/${repo}`
-})
+.run( [ '$rootScope', function ($rootScope) {
+  $rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
+      $rootScope.$previousState = from;
+  });
+}])
 .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
   $urlRouterProvider.otherwise('/home/list');
   $stateProvider

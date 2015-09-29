@@ -9,6 +9,10 @@ class IssuesController {
     this.loadIssues();
   }
 
+  back() {
+    
+  }
+
   loadIssues() {
     this.github.issues(this.fullName)
       .then((result) => {

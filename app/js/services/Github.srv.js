@@ -40,7 +40,6 @@ class GithubService {
     return this.promise((resolve, reject) => {
       this.http.get(url)
         .then((result) => {
-          console.log(result.data);
           resolve(result);
         }, (error) => {
           reject(error);
@@ -49,6 +48,6 @@ class GithubService {
   }
 }
 
-GithubService.$inject = ['$q', '$http', 'Github'];
+GithubService.$inject = ['$q', '$http'];
 
 module.exports = GithubService;
